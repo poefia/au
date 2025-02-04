@@ -59,8 +59,10 @@ def check_flag():
     YY_value = input('フラグを有効にしますか？(enterで有効 / nで無効): ')
     if YY_value == '':
         YY_value = '01'
-    else: #別になんでもいい
+        print('フラグを有効にしました。')
+    else: #
         YY_value = '00'
+        print('フラグを無効にしました。')
     return YY_value
 
 def get_position():
