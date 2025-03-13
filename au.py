@@ -49,8 +49,11 @@ import os
 def get_region_code():
     while True:
         try:
-            XX_value = input('国籍コードの値を入力(参考: https://ameblo.jp/kakkeko/entry-11521113890.html): ')
-            XX_value_hex = str(format(int(XX_value), 'x').upper())
+            XX_value = int(input('国籍コードの値を入力 (参考: https://wiki.tockdom.com/wiki/Extended_Regions#Region_List): '))
+            if XX_value < 1 or XX_value > 254:
+                print('1から254の範囲で入力してください。')
+                continue
+            XX_value_hex = str(format(XX_value, 'X'))
             print(f'HEX値: {XX_value_hex}')
             return XX_value_hex
         except ValueError:
