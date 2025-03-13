@@ -93,7 +93,7 @@ def main():
     XX_value_hex = get_region_code()
     YY_value = check_flag()
     Z_1, Z_2 = get_position()
-    new_code = replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2)
+    new_code = replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2).strip()
     pyperclip.copy(new_code)
     print('コードをクリップボードにコピーしました。')
     os.system('pause')
