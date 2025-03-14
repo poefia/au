@@ -75,16 +75,13 @@ def check_flag():
 
 def get_position():
     while True:
-        try:
-            Z_value = input('座標の値を入力: ')
-            if len(Z_value) != 8:
-                print('8文字で入力してください。')
-                continue
-            Z_1 = Z_value[:4].upper()
-            Z_2 = Z_value[4:].upper()
-            return Z_1, Z_2
-        except ValueError:
-            print('無効な入力です。')
+        Z_value = input('座標の値を入力: ')
+        if len(Z_value) != 8:
+            print('8文字で入力してください。')
+            continue
+        Z_1 = Z_value[:4].upper()
+        Z_2 = Z_value[4:].upper()
+        return Z_1, Z_2
 
 def replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2):
     code_str = code_str.replace('XX', XX_value_hex)
