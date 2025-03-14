@@ -1,4 +1,3 @@
-#NTSC-J only
 code_str = '''
 C2009590 00000028
 38604000 38800020
@@ -25,8 +24,8 @@ C2009590 00000028
 8C830001 2C040007
 40A20028 88C3FFFF
 2C060010 4082001C
-3C80XXYY 90830001
-3C80ZZZZ 6084GGGG
+3C80{XX}{YY} 90830001
+3C80{ZZZZ} 6084{GGGG}
 90831005 4800000C
 34A5FFFF 4082FFCC
 7FA3EB78 38800002
@@ -84,11 +83,8 @@ def get_position():
         return Z_1, Z_2
 
 def replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2):
-    code_str = code_str.replace('XX', XX_value_hex)
-    code_str = code_str.replace('YY', YY_value)
-    code_str = code_str.replace('ZZZZ', Z_1)
-    code_str = code_str.replace('GGGG', Z_2)
-    return code_str
+    new_code = code_str.format(XX=XX_value_hex, YY=YY_value, ZZZZ=Z_1, GGGG=Z_2)
+    return new_code
 
 def main():
     XX_value_hex = get_region_code()
