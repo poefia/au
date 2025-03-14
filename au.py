@@ -60,14 +60,18 @@ def get_region_code():
             print('無効な入力です。')
 
 def check_flag():
-    YY_value = input('フラグを有効にしますか？(enterで有効 / nで無効): ')
-    if YY_value == '':
-        YY_value = '01'
-        print('フラグを有効にしました。')
-    else: #
-        YY_value = '00'
-        print('フラグを無効にしました。')
-    return YY_value
+    while True:
+        YY_check = input('フラグを有効にしますか？(enterで有効 / 0で無効): ')
+        if not YY_check:
+            YY_value = '01'
+            print('フラグを有効にしました。')
+        elif YY_check == '0':
+            YY_value = '00'
+            print('フラグを無効にしました。')
+        else:
+            print('無効な入力です。')
+            continue
+        return YY_value
 
 def get_position():
     while True:
