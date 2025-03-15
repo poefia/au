@@ -43,6 +43,7 @@ C2009590 00000028
 '''
 
 import pyperclip
+import re
 import os
 
 def get_region_code():
@@ -74,12 +75,12 @@ def check_flag():
 
 def get_position():
     while True:
-        Z_value = input('座標の値を入力: ')
-        if len(Z_value) != 8:
-            print('8文字で入力してください。')
+        Z_value = input('座標の値を入力: ').upper()
+        if not re.fullmatch(r'[0-9A-F]{8}', Z_value):
+            print('入力は8文字の16進数である必要があります')
             continue
-        Z_1 = Z_value[:4].upper()
-        Z_2 = Z_value[4:].upper()
+        Z_1 = Z_value[:4]
+        Z_2 = Z_value[4:]
         return Z_1, Z_2
 
 def replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2):
