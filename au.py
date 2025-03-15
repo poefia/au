@@ -84,8 +84,7 @@ def get_position():
         return Z_1, Z_2
 
 def replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2):
-    new_code = code_str.format(XX=XX_value_hex, YY=YY_value, ZZZZ=Z_1, GGGG=Z_2)
-    return new_code
+    return code_str.format(XX=XX_value_hex, YY=YY_value, ZZZZ=Z_1, GGGG=Z_2)
 
 def main():
     XX_value_hex = get_region_code()
