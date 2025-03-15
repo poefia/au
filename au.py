@@ -87,13 +87,19 @@ def replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2):
     return code_str.format(XX=XX_value_hex, YY=YY_value, ZZZZ=Z_1, GGGG=Z_2)
 
 def main():
-    XX_value_hex = get_region_code()
-    YY_value = check_flag()
-    Z_1, Z_2 = get_position()
-    new_code = replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2).strip()
-    pyperclip.copy(new_code)
-    print('コードをクリップボードにコピーしました。')
-    os.system('pause')
+    try:
+        XX_value_hex = get_region_code()
+        YY_value = check_flag()
+        Z_1, Z_2 = get_position()
+        new_code = replace_code(code_str, XX_value_hex, YY_value, Z_1, Z_2).strip()
+        pyperclip.copy(new_code)
+        print('コードをクリップボードにコピーしました。')
+    except KeyboardInterrupt:
+        print('中断しました。')
+    except Exception as e:
+        print(f'エラーが発生しました: {e}')
+    finally:
+        os.system('pause')
 
 if __name__ == '__main__':
     main()
